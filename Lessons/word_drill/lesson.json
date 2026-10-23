@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "id": "word_drill",
+  "name": "Word Drill",
+  "description": "A quick round of words you already have: the English, the word back, the next one. Nothing new is taught.",
+  "version": "1.0",
+  "type": "drill",
+  "activation": {
+    "voice_triggers": [
+      "drill me",
+      "quiz me",
+      "test me",
+      "keep drilling me",
+      "drill me again"
+    ],
+    "voice_aliases": [
+      "word drill",
+      "quick drill"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [
+    {
+      "id": "topic",
+      "name": "What to drill",
+      "type": "text",
+      "required": false,
+      "ask_user": false,
+      "allow_tutor_choice": true,
+      "prompt": "What would you like to be drilled on?",
+      "options": [],
+      "default": null
+    }
+  ],
+  "objectives": [
+    {
+      "id": "recall_known",
+      "description": "Say each word from its English, one word at a time.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "produces the word when given only the English",
+        "no part of the word was supplied first"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "Only words the student already has. Nothing is taught.",
+    "English in, one word back, the next one. No sentences.",
+    "Every word once before any comes round again; a miss comes round once more at the end."
+  ],
+  "content": {
+    "target_vocabulary": [],
+    "suggested_vocabulary": [],
+    "target_grammar": [],
+    "scenarios": [
+      {
+        "id": "known_words",
+        "name": "Words already on file",
+        "description": "Saved words, and words taught earlier on the call, that fit what the student asked to be drilled on.",
+        "importance": "required"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "drill",
+      "name": "Drill",
+      "purpose": "Every word once, from its English.",
+      "instructions": [
+        "Ask for each word by its English only: one word in, one word back."
+      ],
+      "activities": [
+        {
+          "id": "quick_round",
+          "name": "Quick round",
+          "description": "The English, the word back, the next one.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "Every word has been asked once, and each miss once more."
+      ],
+      "completion_guidance": [
+        "Say how many were right first time, and which to look at again."
+      ],
+      "objectives": [
+        "recall_known"
+      ],
+      "mode": "drill",
+      "quick_round": true,
+      "role_play": "none",
+      "reference": []
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "A miss is told plainly and comes round once more at the end of the round.",
+      "A word missed twice is let go for this call, and named at the end.",
+      "Offer to learn the words instead if too few come back."
+    ],
+    "if_succeeding": [
+      "Offer another round straight away.",
+      "Offer a drill on another subject they have words for.",
+      "Offer a Vocabulary Builder lesson on something new."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "how many words were right first time"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "every word in the drill has been asked"
+    ],
+    "min_required_objectives": 1,
+    "announcement_guidance": [
+      "Say how many were right first time and name the misses. Then ask: again, or something else?"
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "which words came back unaided and which were missed"
+    ],
+    "notes": "A drill teaches nothing new. Do not add its words as new vocabulary."
+  }
+}

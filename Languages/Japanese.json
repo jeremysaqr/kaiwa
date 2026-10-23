@@ -1,0 +1,120 @@
+{
+  "language": "Japanese",
+  "reference": {
+    "numbers": "Japanese numbers are built by joining words, with nothing between them.\n1 ichi, 2 ni, 3 san, 4 yon, 5 go, 6 roku, 7 nana, 8 hachi, 9 kyuu, 10 juu.\n4, 7 and 9 have second readings (shi, shichi, ku). Use yon, nana, kyuu for counting and prices. Shi also sounds like the word for death, so yon is the everyday 4, and with hyaku and sen it is always yon: yonhyaku, yonsen.\nTens: 10 juu, 20 nijuu, 30 sanjuu, 40 yonjuu, 50 gojuu, 60 rokujuu, 70 nanajuu, 80 hachijuu, 90 kyuujuu.\nTwo digits = the tens word then the units word: 21 nijuu ichi, 29 nijuu kyuu, 61 rokujuu ichi, 63 rokujuu san, 99 kyuujuu kyuu.\nA tens word ALONE is the round number. nijuu is exactly 20, never 29. sanjuu is exactly 30.\nNever chain two tens words. \"nijuu juu\" is not a number. Thirty is sanjuu.\nNever put the units word first. 61 is rokujuu ichi, never ichi rokujuu.\nHundreds: 100 hyaku, 200 nihyaku, 300 sanbyaku, 400 yonhyaku, 500 gohyaku, 600 roppyaku, 700 nanahyaku, 800 happyaku, 900 kyuuhyaku. Only 300, 600 and 800 change sound: after san the h becomes b, and after roku and hachi it becomes pp. It is only easier to say; there is no further rule.\nThousands: 1000 sen, 2000 nisen, 3000 sanzen, 5000 gosen, 8000 hassen, 10000 ichiman.",
+    "time": "Hours take -ji: 1:00 ichiji, 2:00 niji, 3:00 sanji, 5:00 goji, 6:00 rokuji, 8:00 hachiji, 10:00 juuji, 11:00 juuichiji, 12:00 juuniji.\nIrregular hours: 4:00 yoji (not yonji), 7:00 shichiji, 9:00 kuji (not kyuuji).\nHalf past is -ji han: 3:30 sanji han.\nMinutes take -fun after 2, 5, 7, 9 (nifun, gofun, nanafun, kyuufun) and -pun after 1, 3, 4, 6, 8, 10 (ippun, sanpun, yonpun, roppun, happun, juppun).\n10 juppun, 15 juugofun, 20 nijuppun, 30 sanjuppun, 45 yonjuugofun. 3:10 sanji juppun, 7:15 shichiji juugofun.\nam gozen, pm gogo, and they come FIRST: gogo sanji is 3pm.\nWhat time is it: ima nanji desu ka. It is 3 o'clock: sanji desu. From 9: kuji kara. Until 5: goji made.",
+    "counting": "Counters attach to the number and change its shape.\nFlat things -mai: ichimai, nimai, sanmai. Long things -hon: ippon, nihon, sanbon, yonhon, roppon.\nSmall objects use the native set: hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu, nanatsu, yattsu, kokonotsu, tou.\nPeople -nin, but 1 and 2 are irregular: hitori, futari, sannin, yonin.",
+    "money": "Yen is -en, said after the number: 100 hyakuen, 350 sanbyaku gojuuen, 1200 sen nihyakuen, 10000 ichiman en.\nThere are no decimals in everyday yen prices.\nHow much is this: kore wa ikura desu ka. How much: ikura desu ka. It is 500 yen: gohyakuen desu. The cashier states the total: sen nihyaku en desu (it is 1200 yen); zenbu de sanzen en desu (3000 yen in all).\nI will take this: kore o kudasai. Expensive takai, cheap yasui.\nCan I use a card: kaado wa tsukaemasu ka. By card: kaado de. In cash: genkin de.\nChange otsuri. Receipt reshiito; a receipt, please: reshiito o onegaishimasu. A bag fukuro; no bag needed: fukuro wa irimasen (fukuro wa kekkou desu and fukuro wa daijoubu desu are just as normal).\nThe cashier asks: oshiharai wa ikaga nasaimasu ka (how would you like to pay?); fukuro wa goriyou desu ka (would you like a bag?). What the cashier says back: kashikomarimashita (certainly); hai, douzo (here you are); arigatou gozaimasu (thank you). There is no tipping in Japan.",
+    "food": "Loanwords are sometimes the normal word and sometimes not. Teach the word people actually say.\nMeat niku: gyuuniku beef (gyuu is cow), butaniku pork (buta is pig), toriniku chicken (tori is bird), ramu lamb. On menus: gyuudon beef bowl, yakitori grilled chicken, tonkatsu pork cutlet. Fish sakana: maguro tuna, ebi shrimp, ika squid, tako octopus, kani crab.\nVegetables yasai: tamanegi onion, ninjin carrot, jagaimo potato, kyuuri cucumber, nasu eggplant, daikon radish, hourensou spinach, negi green onion, ninniku garlic, shouga ginger, kinoko mushroom, toumorokoshi corn.\nStaples: gohan cooked rice, pan bread, men noodles, tamago egg, tofu, miso, shouyu soy sauce, shio salt, satou sugar, abura oil.\nFruit kudamono: ringo apple, mikan mandarin, budou grapes, ichigo strawberry, momo peach, nashi pear, suika watermelon.\nThese loanwords ARE the normal word, with no native alternative in use: tomato, banana, remon lemon, meron melon, painappuru pineapple, kyabetsu cabbage, retasu lettuce, piiman green pepper, sarada salad, suupu soup, chiizu cheese, bataa butter, koohii coffee.\nOnion is tamanegi and potato is jagaimo: the English words are not used for the vegetables. Poteto appears only in dish names: poteto sarada, furaido poteto.\nAsking what is in a dish: X wa haitte imasu ka (is there X in it?). Is this X: kore wa X desu ka.\nAsking for a dish: X o onegaishimasu, or X o kudasai. Without X: X nashi de, or X nuki de. Recommendation osusume.\nA waiter asks: nani ni nasaimasu ka (what will you have?); dochira ni nasaimasu ka (which would you like?); hoka ni gochuumon wa gozaimasu ka (anything else?).",
+    "restaurant": "Whole phrases for a restaurant visit. Teach these as written.\nCalling staff: sumimasen (excuse me). On entering staff say: irasshaimase (welcome).\nThe waiter asks: nanmei-sama desu ka (how many people?). Answer: hitori desu (one), futari desu (two), sannin desu (three).\nThe menu, please: menyuu o onegaishimasu. Do you have an English menu: eigo no menyuu wa arimasu ka.\nOrdering: X o onegaishimasu, or X o kudasai (X, please). Pointing: kore o kudasai (this one, please).\nThe little word o comes straight after the thing you want and marks it as the thing you want: biiru o kudasai is beer — that, please. It has no English equivalent and has nothing to do with politeness. It is the same little word in menyuu o onegaishimasu, biiru o kudasai and kore o kudasai. Call it a little word, never a particle.\nTwo of something: X o futatsu kudasai. One: hitotsu.\nDrinks: omizu water, biiru beer, ocha tea, koohii coffee. omizu is one word; its first o is part of the word (mizu is water, and omizu is the polite way to say it), not the little word o. In omizu o kudasai the little word is the second o.\nWhat do you recommend: osusume wa nan desu ka.\nWithout X: X nuki de onegaishimasu. There is no o before nuki.\nThe waiter asks, in this order: onomimono wa (something to drink?); gochuumon wa (your order?) or nani ni nasaimasu ka (what will you have?); hoka ni gochuumon wa gozaimasu ka (anything else?); ijou de yoroshii desu ka (is that everything?). Answer to the last: hai, ijou desu (yes, that is all). An order is said back first: omizu desu ne (water, right?). Bringing it: omatase shimashita (thank you for waiting).\nThe bill, please: okaikei o onegaishimasu. By card: kaado de. In cash: genkin de.\nIt is delicious: oishii desu. Thank you: arigatou gozaimasu. On leaving: gochisousama deshita (thank you for the meal).\nWhat staff say back: hai, shoushou omachi kudasai (yes, one moment please) when called over; kochira e douzo (this way, please) when seating you; hai, douzo (here you are) when handing you something; kashikomarimashita (certainly) to an order; arigatou gozaimasu (thank you) when you pay or leave.\nSpellings: raamen, menyuu, teeburu, resutoran. A ramen shop is raamen-ya.\nkono is always followed by a noun; \"kono wa\" is not Japanese. Okay is daijoubu desu; there is no word \"oki\".",
+    "station": "Whole phrases for trains and stations. Teach these as written.\nStation eki. Train densha. Subway chikatetsu. Ticket kippu. Platform hoomu (never \"platformu\").\nWhere is X: X wa doko desu ka. Exit deguchi. Entrance iriguchi. Ticket gate kaisatsu.\nTrack numbers take -ban sen: ichiban sen (track 1), niban sen (track 2), sanban sen (track 3). Which track: nanban sen desu ka.\nTickets are counted with -mai: ichimai (one), nimai (two). To X is X made. One ticket to Shinjuku, please: Shinjuku made ichimai kudasai.\nI am going to X: X ni ikimasu. Does this go to X: kore wa X ni ikimasu ka. By train: densha de.\nThe next train: tsugi no densha. What time does it leave: nanji ni demasu ka. It leaves at 3: sanji ni demasu.\nChanging trains: norikae. Where do I change: doko de norikaemasu ka.\nIt is delayed: okurete imasu.\nPlease say it again: mou ichido onegaishimasu. Slowly, please: yukkuri onegaishimasu. I do not understand: wakarimasen.",
+    "hotel": "Whole phrases for a hotel stay. Teach these as written.\nCheck-in, please: chekku in o onegaishimasu. I have a reservation: yoyaku ga arimasu. My name is X: X desu.\nStaff ask: onamae wa (your name?); pasupooto o onegaishimasu (your passport, please). Here you are: hai, douzo.\nRoom heya. Key kagi. Two nights: nihaku. One night: ippaku.\nFloors take -kai: ikkai (1st), nikai (2nd), sangai (3rd), yonkai (4th), gokai (5th). What floor: nankai desu ka.\nBreakfast choushoku. What time is breakfast: choushoku wa nanji desu ka.\nIs there X: X wa arimasu ka. Wi-Fi waifai. The password: pasuwaado.\nX does not work: X ga tsukaemasen. There is no hot water: oyu ga demasen. Air conditioning eakon.\nCheck-out, please: chekku auto o onegaishimasu. Can you keep my luggage: nimotsu o azukatte moraemasu ka.\nThank you: arigatou gozaimasu."
+  },
+  "topics": {
+    "food": [
+      "food",
+      "foods",
+      "ingredient",
+      "ingredients",
+      "cooking",
+      "cook",
+      "meat",
+      "meats",
+      "vegetable",
+      "vegetables",
+      "fruit",
+      "fish",
+      "seafood",
+      "eat",
+      "eating",
+      "meal",
+      "meals",
+      "dish",
+      "dishes",
+      "recipe",
+      "groceries"
+    ],
+    "restaurant": [
+      "restaurant",
+      "restaurants",
+      "ordering",
+      "order",
+      "menu",
+      "dining",
+      "cafe",
+      "izakaya",
+      "ramen",
+      "waiter",
+      "eating out",
+      "bar"
+    ],
+    "station": [
+      "train",
+      "trains",
+      "station",
+      "stations",
+      "subway",
+      "metro",
+      "ticket",
+      "tickets",
+      "platform",
+      "travel",
+      "transport",
+      "getting around",
+      "directions"
+    ],
+    "hotel": [
+      "hotel",
+      "hotels",
+      "check in",
+      "checking in",
+      "accommodation",
+      "room",
+      "reception",
+      "hostel",
+      "ryokan"
+    ],
+    "numbers": [
+      "number",
+      "numbers",
+      "counting",
+      "count",
+      "age",
+      "ages",
+      "quantity",
+      "quantities",
+      "maths",
+      "math"
+    ],
+    "time": [
+      "time",
+      "times",
+      "clock",
+      "schedule",
+      "hours",
+      "appointment",
+      "appointments",
+      "timetable"
+    ],
+    "money": [
+      "money",
+      "price",
+      "prices",
+      "cost",
+      "costs",
+      "paying",
+      "payment",
+      "shopping",
+      "buying",
+      "budget",
+      "yen",
+      "shop",
+      "store"
+    ],
+    "counting": [
+      "counter",
+      "counters",
+      "how many"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "good_lesson",
+  "name": "A Perfectly Fine Lesson",
+  "description": "Exists so the broken ones have something to not break.",
+  "type": "review",
+  "activation": { "voice_triggers": ["the fine lesson"], "voice_aliases": ["fine"] },
+  "objectives": [{ "id": "do_a_thing", "description": "Do a thing.", "required": true }],
+  "phases": [
+    { "id": "one", "name": "One" },
+    { "id": "two", "name": "Two" }
+  ]
+}

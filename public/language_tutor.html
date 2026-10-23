@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kaiwa</title>
+    <meta name="description" content="A local voice tutor powered by the OpenAI Realtime API." />
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%97%A3%EF%B8%8F%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <!-- ================= Sidebar ================= -->
+      <aside class="sidebar" id="sidebar">
+        <header class="sidebar__head">
+          <h1 class="brand">Kaiwa</h1>
+          <button
+            type="button"
+            class="icon-btn sidebar__close"
+            id="sidebarClose"
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </header>
+
+        <!-- Connection status -->
+        <section class="panel" aria-labelledby="statusHeading">
+          <h2 class="panel__title" id="statusHeading">Status</h2>
+          <ul class="status-list" id="statusList">
+            <li class="status" id="statusBackend">
+              <span class="status__dot" data-state="pending"></span>
+              <span class="status__label">Backend</span>
+              <span class="status__value">Checking…</span>
+            </li>
+            <li class="status" id="statusStorage">
+              <span class="status__dot" data-state="pending"></span>
+              <span class="status__label">Storage</span>
+              <span class="status__value">Checking…</span>
+            </li>
+            <li class="status" id="statusProfile">
+              <span class="status__dot" data-state="idle"></span>
+              <span class="status__label">Profile</span>
+              <span class="status__value">None selected</span>
+            </li>
+            <li class="status" id="statusWebrtc">
+              <span class="status__dot" data-state="idle"></span>
+              <span class="status__label">WebRTC</span>
+              <span class="status__value">Idle</span>
+            </li>
+            <li class="status" id="statusMic">
+              <span class="status__dot" data-state="idle"></span>
+              <span class="status__label">Microphone</span>
+              <span class="status__value">Off</span>
+            </li>
+          </ul>
+          <div class="status-actions">
+            <button type="button" class="btn btn--ghost btn--sm" id="retryHealthBtn">
+              Recheck backend
+            </button>
+          </div>
+        </section>
+
+        <!-- Storage -->
+        <section class="panel" aria-labelledby="storageHeading">
+          <h2 class="panel__title" id="storageHeading">Storage folder</h2>
+          <p class="panel__hint" id="storagePath">No folder selected yet.</p>
+          <div class="btn-row">
+            <button type="button" class="btn btn--primary btn--sm" id="pickFolderBtn">
+              Select storage folder
+            </button>
+            <button type="button" class="btn btn--ghost btn--sm" id="grantAccessBtn" hidden>
+              Regrant access
+            </button>
+          </div>
+        </section>
+
+        <!-- Profile selection -->
+        <section class="panel" aria-labelledby="profileHeading">
+          <h2 class="panel__title" id="profileHeading">Profile</h2>
+
+          <label class="field">
+            <span class="field__label">User</span>
+            <select class="select" id="userSelect" disabled>
+              <option value="">Select a storage folder first</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Language</span>
+            <select class="select" id="languageSelect" disabled>
+              <option value="">Select a user first</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">
+              Lesson Comfort Level
+              <button
+                type="button"
+                class="info-btn"
+                id="comfortInfoBtn"
+                aria-label="What is Lesson Comfort Level?"
+              >
+                ?
+              </button>
+            </span>
+            <select class="select" id="levelSelect" disabled></select>
+            <span class="field__hint">
+              You control this. The tutor never changes it on its own.
+            </span>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Tutor name</span>
+            <input
+              class="input"
+              id="tutorNameInput"
+              type="text"
+              maxlength="48"
+              placeholder="Franz"
+              disabled
+            />
+          </label>
+        </section>
+
+        <!-- Lesson selection (Lesson Skills Framework) -->
+        <section class="panel" aria-labelledby="lessonHeading">
+          <h2 class="panel__title" id="lessonHeading">Lesson</h2>
+
+          <label class="field">
+            <span class="field__label">Active lesson</span>
+            <select class="select" id="lessonSelect" disabled>
+              <option value="">Normal Conversation</option>
+            </select>
+            <span class="field__hint" id="lessonHint">
+              Optional. You can also just ask for a lesson out loud.
+            </span>
+          </label>
+
+          <ul class="lesson-problems" id="lessonProblems" hidden></ul>
+
+          <div class="btn-row">
+            <button type="button" class="btn btn--ghost btn--sm" id="refreshLessonsBtn">
+              Reload lessons
+            </button>
+          </div>
+        </section>
+
+        <!-- Settings -->
+        <section class="panel" aria-labelledby="settingsHeading">
+          <h2 class="panel__title" id="settingsHeading">Settings</h2>
+          <p class="panel__hint">
+            OpenAI API key: <span id="apiKeySummary">checking…</span>
+          </p>
+          <div class="btn-row">
+            <button type="button" class="btn btn--ghost btn--sm" id="manageKeyBtn">
+              OpenAI API key
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- ================= Main ================= -->
+      <main class="main">
+        <header class="topbar">
+          <button
+            type="button"
+            class="icon-btn topbar__menu"
+            id="sidebarToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <div class="topbar__title">
+            <span class="topbar__profile" id="topbarProfile">No profile selected</span>
+            <span class="topbar__sub" id="topbarSub">Select a folder, user and language to begin</span>
+          </div>
+          <div class="topbar__actions">
+            <button type="button" class="btn btn--ghost btn--sm" id="showPromptBtn" disabled>
+              Show Active Tutor Prompt
+            </button>
+          </div>
+        </header>
+
+        <!-- Global banner for errors / notices -->
+        <div class="banner" id="banner" hidden role="status" aria-live="polite">
+          <span class="banner__text" id="bannerText"></span>
+          <button type="button" class="banner__close" id="bannerClose" aria-label="Dismiss">✕</button>
+        </div>
+
+        <div class="workspace">
+          <!-- Conversation -->
+          <section class="lesson" aria-labelledby="conversationHeading">
+            <h2 class="visually-hidden" id="conversationHeading">Conversation</h2>
+
+            <!-- Minimal lesson indicator (PART 27, PART 53). Hidden entirely
+                 during normal conversation. -->
+            <div class="lesson-strip" id="lessonStrip" hidden>
+              <div class="lesson-strip__text">
+                <span class="lesson-strip__name" id="lessonStripName">—</span>
+                <span class="lesson-strip__phase" id="lessonStripPhase"></span>
+              </div>
+              <div class="lesson-strip__meter" aria-hidden="true">
+                <span class="lesson-strip__fill" id="lessonProgressBar"></span>
+              </div>
+              <span class="lesson-strip__value" id="lessonProgressValue">0%</span>
+              <button type="button" class="btn btn--ghost btn--sm" id="nextPhaseBtn">
+                Move on
+              </button>
+              <button type="button" class="btn btn--ghost btn--sm" id="endLessonBtn">
+                Back to conversation
+              </button>
+            </div>
+
+            <div class="transcript-wrap">
+              <div class="transcript" id="transcript" tabindex="0" aria-live="polite">
+                <div class="empty" id="transcriptEmpty">
+                  <div class="empty__icon">🎙️</div>
+                  <p class="empty__title">No conversation yet</p>
+                  <p class="empty__body">
+                    Choose a profile, then press <strong>Start Call</strong>. Your tutor speaks
+                    first — just answer out loud.
+                  </p>
+                </div>
+              </div>
+              <button type="button" class="jump-btn" id="jumpLatestBtn" hidden>
+                ↓ Jump to latest
+              </button>
+            </div>
+          </section>
+
+          <!-- Memory card -->
+          <aside class="memory" aria-labelledby="memoryHeading">
+            <h2 class="panel__title" id="memoryHeading">Active Student Profile Memory</h2>
+
+            <dl class="memory__grid">
+              <div class="memory__row">
+                <dt>Student</dt>
+                <dd id="memStudent">—</dd>
+              </div>
+              <div class="memory__row">
+                <dt>Language</dt>
+                <dd id="memLanguage">—</dd>
+              </div>
+              <div class="memory__row">
+                <dt>Tutor</dt>
+                <dd id="memTutor">—</dd>
+              </div>
+              <div class="memory__row">
+                <dt>Lesson Comfort Level</dt>
+                <dd id="memLevel">—</dd>
+              </div>
+              <div class="memory__row">
+                <dt>AI Assessed Level</dt>
+                <dd id="memAssessed">—</dd>
+              </div>
+            </dl>
+
+            <div class="memory__section">
+              <h3 class="memory__subtitle">Known Weaknesses</h3>
+              <ul class="chips" id="memWeaknesses">
+                <li class="chips__empty">Nothing recorded yet</li>
+              </ul>
+            </div>
+
+            <div class="memory__section">
+              <h3 class="memory__subtitle">Vocab to Review</h3>
+              <ul class="chips" id="memVocab">
+                <li class="chips__empty">Nothing recorded yet</li>
+              </ul>
+            </div>
+
+            <div class="memory__section">
+              <h3 class="memory__subtitle">Tutor Recommendation</h3>
+              <p class="memory__reco" id="memRecommendation">
+                No lessons assessed yet.
+              </p>
+              <button type="button" class="btn btn--accent btn--sm" id="applyRecoBtn" hidden>
+                Apply Recommendation
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Persistent call controls: always reachable, never scrolled away -->
+        <footer class="callbar">
+          <div class="callbar__state">
+            <span class="callbar__dot" id="callDot" data-state="idle"></span>
+            <span id="callState">Ready</span>
+          </div>
+          <div class="callbar__buttons">
+            <span class="callbar__timer" id="callTimer" hidden aria-label="Call duration">00:00</span>
+            <button type="button" class="btn btn--ghost" id="muteBtn" disabled>Mute</button>
+            <button type="button" class="btn btn--primary" id="startCallBtn" disabled>
+              Start Call
+            </button>
+            <button type="button" class="btn btn--danger" id="endCallBtn" hidden>End Call</button>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- ================= Dialogs ================= -->
+
+    <dialog class="dialog" id="nameDialog">
+      <form method="dialog" class="dialog__form" id="nameForm">
+        <h2 class="dialog__title" id="nameDialogTitle">Create new user</h2>
+        <p class="dialog__body" id="nameDialogBody">
+          A folder will be created for this name.
+        </p>
+        <label class="field">
+          <span class="field__label" id="nameDialogLabel">Name</span>
+          <input class="input" id="nameInput" type="text" maxlength="64" autocomplete="off" />
+        </label>
+        <p class="dialog__error" id="nameError" hidden></p>
+        <div class="dialog__actions">
+          <button type="button" class="btn btn--ghost" id="nameCancel">Cancel</button>
+          <button type="submit" class="btn btn--primary" id="nameConfirm">Create</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog" id="keyDialog">
+      <form method="dialog" class="dialog__form" id="keyForm">
+        <h2 class="dialog__title">Connect your OpenAI account</h2>
+        <div class="dialog__body dialog__body--prose">
+          <p>
+            Kaiwa talks to you through OpenAI, using your own API key. Create one at
+            <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">platform.openai.com/api-keys</a>
+            and paste it here. Usage is billed to your OpenAI account.
+          </p>
+          <p>
+            The key is saved on this computer only. It stays with Kaiwa's local server
+            and is never sent back to the browser.
+          </p>
+        </div>
+        <p class="dialog__body" id="keyCurrent" hidden></p>
+        <label class="field">
+          <span class="field__label">API key</span>
+          <input
+            class="input"
+            id="keyInput"
+            type="password"
+            placeholder="sk-…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </label>
+        <p class="dialog__error" id="keyError" hidden></p>
+        <div class="dialog__actions">
+          <button type="button" class="btn btn--ghost" id="keyRemove" hidden>Remove key</button>
+          <button type="button" class="btn btn--ghost" id="keyCancel">Not now</button>
+          <button type="submit" class="btn btn--primary" id="keySave">Save key</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog dialog--wide" id="promptDialog">
+      <div class="dialog__form">
+        <h2 class="dialog__title">Active Tutor Prompt</h2>
+        <p class="dialog__body" id="promptSummary">
+          This is the exact instruction text sent to the tutor when the call starts.
+        </p>
+        <pre class="prompt-preview" id="promptPreview"></pre>
+        <div class="dialog__actions">
+          <button type="button" class="btn btn--ghost" id="promptCopy">Copy</button>
+          <button type="button" class="btn btn--primary" id="promptClose">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="dialog" id="infoDialog">
+      <div class="dialog__form">
+        <h2 class="dialog__title">Lesson Comfort Level vs AI Assessment</h2>
+        <div class="dialog__body dialog__body--prose">
+          <p>
+            <strong>Lesson Comfort Level</strong> is how difficult <em>you</em> want your lessons
+            to be. It is yours alone — the tutor teaches at this level until you change it here.
+          </p>
+          <p>
+            <strong>AI Assessed Level</strong> is what the AI thinks you demonstrated in your
+            recent lessons. It is advice, nothing more. After three consistent assessments the
+            tutor may suggest a change, and you decide whether to apply it.
+          </p>
+        </div>
+        <div class="dialog__actions">
+          <button type="button" class="btn btn--primary" id="infoClose">Got it</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "id": "numbers_time_money",
+  "name": "Numbers, Time & Money",
+  "description": "Build fluent, automatic handling of numbers, prices, times, dates and quantities.",
+  "version": "1.0",
+  "type": "instructional",
+  "activation": {
+    "voice_triggers": [
+      "numbers time and money lesson",
+      "numbers and money lesson",
+      "numbers time money lesson",
+      "numbers lesson",
+      "money lesson",
+      "lesson about numbers",
+      "practice numbers and prices",
+      "numbers drill"
+    ],
+    "voice_aliases": [
+      "numbers",
+      "counting",
+      "telling the time",
+      "prices",
+      "money",
+      "dates"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [
+    {
+      "id": "focus",
+      "name": "Area to focus on",
+      "type": "select",
+      "required": false,
+      "ask_user": true,
+      "allow_tutor_choice": true,
+      "prompt": "Is there a part of this you want to focus on — numbers, prices, times, dates — or shall I pick?",
+      "options": [
+        "numbers",
+        "prices",
+        "time",
+        "dates",
+        "quantities",
+        "mixed"
+      ],
+      "default": "mixed"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "understand_numbers",
+      "description": "Understand spoken numbers on first hearing.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "writes down or repeats a number correctly without a second hearing"
+      ]
+    },
+    {
+      "id": "produce_numbers",
+      "description": "Produce numbers aloud without counting up to them.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "says a two-digit number without hesitation"
+      ]
+    },
+    {
+      "id": "larger_numbers",
+      "description": "Handle hundreds and thousands.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "says a three or four digit number correctly"
+      ]
+    },
+    {
+      "id": "understand_prices",
+      "description": "Understand a price when it is said aloud.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "repeats a price back correctly, including the small units"
+      ]
+    },
+    {
+      "id": "state_prices",
+      "description": "State a price, including decimals or small units.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "produces a price in the natural form used by native speakers"
+      ]
+    },
+    {
+      "id": "understand_time",
+      "description": "Understand a time when it is said aloud.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "acts correctly on a stated time"
+      ]
+    },
+    {
+      "id": "state_time",
+      "description": "State a time naturally.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "uses the idiomatic form rather than digit-by-digit"
+      ]
+    },
+    {
+      "id": "handle_dates",
+      "description": "Say and understand dates.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "gives a date in the usual order for the language"
+      ]
+    },
+    {
+      "id": "handle_quantities",
+      "description": "Use numbers with quantities and counters.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "combines a number with the right counter or unit"
+      ]
+    },
+    {
+      "id": "money_interaction",
+      "description": "Get through a short real transaction involving money.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "understands a total and responds appropriately"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "Numbers are a fluency problem, not a knowledge problem. Aim for automatic.",
+    "Retrieval over explanation. Short prompts, fast turns, many repetitions.",
+    "Reliability before range: never extend while smaller numbers are still slow.",
+    "Keep your turns very short here. They should be doing most of the talking.",
+    "Practise numbers in frames people really use - a price, a time, an age, a phone number, a platform. Never pad a number into an invented sentence just to make a sentence.",
+    "A bare number said quickly and correctly is worth more than a nonsense sentence containing it."
+  ],
+  "content": {
+    "target_vocabulary": [
+      "the numbers zero to twenty",
+      "the tens",
+      "hundred, thousand",
+      "the currency and its small unit",
+      "hour, minute, half, quarter",
+      "today, tomorrow, yesterday",
+      "the days of the week",
+      "the months",
+      "how much, how many, what time"
+    ],
+    "suggested_vocabulary": [
+      "first, second, third and the ordinal pattern",
+      "a half, a third, a quarter",
+      "about, roughly, exactly",
+      "more than, less than",
+      "expensive, cheap",
+      "change, coins, notes",
+      "in the morning, in the afternoon, in the evening",
+      "on time, early, late",
+      "a dozen, a pair, a couple of"
+    ],
+    "target_grammar": [
+      "the number system's joining rules",
+      "ordinal formation",
+      "the idiomatic way of telling the time in this language",
+      "date order and any required prepositions",
+      "counters, classifiers or plural agreement where the language requires them",
+      "question forms for how much and how many"
+    ],
+    "scenarios": [
+      {
+        "id": "shop_transaction",
+        "name": "Buying something small",
+        "description": "A short purchase: price, payment, change.",
+        "importance": "required"
+      },
+      {
+        "id": "making_an_appointment",
+        "name": "Making an appointment",
+        "description": "Agreeing a day and a time.",
+        "importance": "suggested"
+      },
+      {
+        "id": "phone_number_exchange",
+        "name": "Exchanging a phone number",
+        "description": "Digits said quickly, then read back.",
+        "importance": "optional"
+      },
+      {
+        "id": "splitting_a_bill",
+        "name": "Splitting a bill",
+        "description": "Arithmetic out loud, in the target language.",
+        "importance": "optional"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "numbers",
+      "name": "Numbers",
+      "purpose": "Numbers up to 99, said without stopping to think.",
+      "instructions": [
+        "Items are numbers. The meaning of each is the figure, for example 47.",
+        "If the student already knows the numbers up to a hundred, skip single digits: use two-digit numbers, and the readings people get wrong (4, 7 and 9).",
+        "The role-play is a situation where numbers are said aloud: a queue ticket, a room number, an age."
+      ],
+      "activities": [
+        {
+          "id": "say_back",
+          "name": "Say it back",
+          "description": "You say a number at natural speed; the student repeats it.",
+          "importance": "required"
+        },
+        {
+          "id": "count_on",
+          "name": "Count on",
+          "description": "You give a number; the student gives the next two.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Start below where you think they are. Speed matters more than range."
+      ],
+      "advancement_guidance": [
+        "Two-digit numbers come back without a pause."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "understand_numbers",
+        "produce_numbers"
+      ],
+      "reference": [
+        "numbers"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "larger_numbers",
+      "name": "Larger numbers",
+      "purpose": "Hundreds and thousands, including the hundreds whose sound changes.",
+      "instructions": [
+        "Items are numbers of the size prices come in: 300, 650, 1200, 8000.",
+        "Include at least one of 300, 600 or 800."
+      ],
+      "activities": [
+        {
+          "id": "build_up",
+          "name": "Building a big number",
+          "description": "Assemble a number from its parts, out loud.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "Skip entirely for an absolute beginner."
+      ],
+      "advancement_guidance": [
+        "Three-digit numbers are produced without assembly."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "larger_numbers"
+      ],
+      "reference": [
+        "numbers"
+      ],
+      "mode": "teach",
+      "quick_round": true
+    },
+    {
+      "id": "prices",
+      "name": "Prices",
+      "purpose": "Asking what something costs and understanding the answer.",
+      "instructions": [
+        "The first item is how to ask what something costs (\"kore wa ikura desu ka\"). Its reply is a price in words (\"sen nihyaku en desu\", reply_meaning \"1200 yen\"): the student is asked what price they heard. Then two or three prices to understand and say, and \"I'll take this\".",
+        "The role-play is a shop: the assistant states a price, and the student answers with \"I'll take this\". Asking the price is the customer's line, never the assistant's. The assistant's prices are different figures from the items."
+      ],
+      "activities": [
+        {
+          "id": "price_echo",
+          "name": "Price echo",
+          "description": "Repeat a price, then change it.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "Prices with small units come back correctly."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "understand_prices",
+        "state_prices"
+      ],
+      "reference": [
+        "money",
+        "numbers"
+      ],
+      "mode": "teach",
+      "quick_round": true
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "purpose": "Asking the time and telling it: the hour, half past, and minutes.",
+      "instructions": [
+        "Build a time up one piece at a time, each item one step on from the last: asking the time (\"ima nanji desu ka\", whose reply is a plain hour such as \"sanji desu\", reply_meaning \"3:00\"); then a plain hour (\"sanji\" — 3 o'clock; its note says an hour is the number and then ji); then half past the same hour (\"sanji han\" — 3:30; note: han is half); then one time with minutes (\"kuji juppun\" — 9:10; note: the minutes come after the hour).",
+        "No am or pm in this part — that is the next part — and no item longer than three words. At most one irregular hour (yoji, shichiji or kuji)."
+      ],
+      "activities": [
+        {
+          "id": "daily_schedule",
+          "name": "Their actual day",
+          "description": "What time they get up, eat, finish work.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "Times are produced idiomatically without translating from digits."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "understand_time",
+        "state_time"
+      ],
+      "reference": [
+        "time"
+      ],
+      "mode": "teach",
+      "quick_round": true
+    },
+    {
+      "id": "dates",
+      "name": "Opening hours",
+      "purpose": "From what time until what time: shops, trains and restaurants.",
+      "instructions": [
+        "Cover from and until, morning and afternoon, and asking what time something opens or leaves."
+      ],
+      "activities": [
+        {
+          "id": "real_dates",
+          "name": "Dates that matter",
+          "description": "Birthdays and upcoming plans.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Optional for beginners."
+      ],
+      "advancement_guidance": [
+        "A date is produced in the right order without prompting."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "handle_dates"
+      ],
+      "reference": [
+        "time"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "money",
+      "name": "Paying",
+      "purpose": "Paying for something: card or cash, change, a receipt, no bag.",
+      "instructions": [
+        "What a visitor says at the till: by card, in cash, can I use a card, a receipt please, no bag needed. Not \"keep the change\": there is no tipping in Japan.",
+        "The role-play is the till: the cashier asks, the student answers."
+      ],
+      "activities": [
+        {
+          "id": "buy_something",
+          "name": "Buying something",
+          "description": "Ask the price, hear the total, pay, take change.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "The transaction completes without rescue."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "money_interaction",
+        "handle_quantities"
+      ],
+      "reference": [
+        "money"
+      ],
+      "mode": "teach",
+      "quick_round": true
+    },
+    {
+      "id": "mixed_practice",
+      "name": "A whole purchase",
+      "purpose": "One visit to a shop from asking the price to paying, using everything so far.",
+      "instructions": [
+        "Play the shop assistant. Use prices and phrases the student has been taught."
+      ],
+      "activities": [
+        {
+          "id": "rapid_switch",
+          "name": "Rapid switching",
+          "description": "A price, then a time, then a quantity, in quick succession.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Only when the individual types are solid."
+      ],
+      "advancement_guidance": [],
+      "completion_guidance": [],
+      "objectives": [],
+      "reference": [
+        "money",
+        "time"
+      ],
+      "mode": "roleplay"
+    },
+    {
+      "id": "real_world_application",
+      "name": "Review",
+      "purpose": "Everything from this lesson, from memory.",
+      "instructions": [
+        "Ask for each thing from its English.",
+        "Then say what they can now do."
+      ],
+      "activities": [
+        {
+          "id": "conversation_with_numbers",
+          "name": "Conversation with numbers in it",
+          "description": "Ordinary talk that happens to be full of figures.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [
+        "Name the one number type still worth practising."
+      ],
+      "objectives": [],
+      "reference": [],
+      "mode": "review"
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "Narrow the range rather than slowing the pace; ten fast numbers beat thirty slow ones.",
+      "Drop back to the previous phase without commenting on it.",
+      "Use round figures until they are automatic.",
+      "Give the student the number in writing-order first, then ask for it aloud.",
+      "Spend a whole phase on one number type instead of moving through the progression."
+    ],
+    "if_succeeding": [
+      "Speed up. This lesson's difficulty knob is pace.",
+      "Extend the range: bigger numbers, awkward prices, minutes that are not multiples of five.",
+      "Ask for arithmetic out loud.",
+      "Move to mixed practice early and stay there.",
+      "Stop giving the number twice."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "required objectives demonstrated",
+      "how far through the progression the lesson has moved",
+      "whether numbers are produced without visible assembly"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "numbers are understood on first hearing and produced without counting up",
+      "a time and a price have both been handled correctly",
+      "one real transaction has been completed unaided"
+    ],
+    "min_required_objectives": 5,
+    "announcement_guidance": [
+      "Say concretely what got faster, since speed is the point of this lesson.",
+      "Return to normal conversation afterwards."
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "which number ranges are still slow",
+      "whether times are produced idiomatically or digit by digit",
+      "any specific number form that failed repeatedly",
+      "counters or units the student omits"
+    ],
+    "notes": "Ordinary weakness observations. Record them as weaknesses, not as a numbers-specific store."
+  },
+  "reference": [
+    "numbers",
+    "money",
+    "time"
+  ]
+}

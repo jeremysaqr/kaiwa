@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "id": "train_station",
+  "name": "Train Station",
+  "description": "Practice buying tickets, finding platforms and handling travel problems at a station.",
+  "version": "1.0",
+  "type": "scenario",
+  "activation": {
+    "voice_triggers": [
+      "train station lesson",
+      "train station roleplay",
+      "train station role play",
+      "railway station lesson",
+      "lesson about the train station",
+      "practice at the train station",
+      "practice buying train tickets"
+    ],
+    "voice_aliases": [
+      "train station",
+      "the station",
+      "buying a ticket",
+      "train tickets",
+      "catching a train",
+      "trains"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [],
+  "objectives": [
+    {
+      "id": "ask_destination",
+      "description": "Say where they want to go and ask whether a train goes there.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "names a destination inside a question"
+      ]
+    },
+    {
+      "id": "buy_ticket",
+      "description": "Buy a ticket, including single or return and how many.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "asks for a ticket unprompted",
+        "specifies single or return"
+      ]
+    },
+    {
+      "id": "ask_departure_time",
+      "description": "Ask when the train leaves and understand the answer.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "forms a when question",
+        "repeats the time back correctly"
+      ]
+    },
+    {
+      "id": "ask_arrival_time",
+      "description": "Ask when the train arrives.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "distinguishes departure from arrival"
+      ]
+    },
+    {
+      "id": "ask_platform",
+      "description": "Ask which platform or track the train leaves from.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks for the platform and understands a number in reply"
+      ]
+    },
+    {
+      "id": "ask_direct",
+      "description": "Ask whether the train is direct.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks about changing trains"
+      ]
+    },
+    {
+      "id": "ask_transfers",
+      "description": "Ask about a connection: where to change and how long there is.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks where to change",
+        "asks how much time there is"
+      ]
+    },
+    {
+      "id": "ask_delay",
+      "description": "Ask about a delay and understand the answer.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks why or how long"
+      ]
+    },
+    {
+      "id": "find_train",
+      "description": "Work out from the information given which train to take.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "chooses correctly between two options you describe"
+      ]
+    },
+    {
+      "id": "handle_travel_problem",
+      "description": "Deal with a travel problem such as a missed connection.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks for help rather than freezing"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "Be the ticket clerk or a passer-by. Answer in short, realistic bursts.",
+    "This lesson lives on numbers. Say times and platforms at normal speed.",
+    "Asking someone to repeat is a skill. Praise it rather than avoiding the need.",
+    "Give real information they have to act on, not just acknowledge.",
+    "Change destinations, times and platforms every run."
+  ],
+  "content": {
+    "target_vocabulary": [
+      "a ticket, single, return",
+      "platform / track",
+      "to depart, to arrive",
+      "the timetable",
+      "to change trains, a connection",
+      "delayed, cancelled",
+      "first class, second class",
+      "the next train"
+    ],
+    "suggested_vocabulary": [
+      "a seat reservation",
+      "the ticket machine, the ticket office",
+      "a day return, a season ticket",
+      "the express, the local train",
+      "left luggage",
+      "the departure board",
+      "one way, round trip",
+      "on time, late",
+      "the last train"
+    ],
+    "target_grammar": [
+      "question words for when, where and which",
+      "numbers, especially times and platform numbers",
+      "prepositions of place and time used with travel",
+      "polite request forms for buying a ticket",
+      "asking for repetition or slower speech"
+    ],
+    "scenarios": [
+      {
+        "id": "buying_a_ticket",
+        "name": "Buying a ticket",
+        "description": "At the counter: destination, type, quantity, payment.",
+        "importance": "required"
+      },
+      {
+        "id": "asking_for_platform",
+        "name": "Finding the platform",
+        "description": "The student asks where the train leaves from and repeats the number back.",
+        "importance": "required"
+      },
+      {
+        "id": "delayed_train",
+        "name": "A delayed train",
+        "description": "The train is late. The student asks how long and what to do.",
+        "importance": "suggested"
+      },
+      {
+        "id": "making_a_connection",
+        "name": "Making a connection",
+        "description": "A journey with a change partway, and a tight transfer.",
+        "importance": "suggested"
+      },
+      {
+        "id": "finding_the_right_train",
+        "name": "Choosing between two trains",
+        "description": "Two options with different times and stops; the student picks one and says why.",
+        "importance": "optional"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "introduction",
+      "name": "Finding your way",
+      "purpose": "Asking where things are: the station, the exit, the ticket gate, which track.",
+      "instructions": [
+        "The role-play is asking a member of staff for directions."
+      ],
+      "activities": [],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "You have a sense of whether numbers will be the bottleneck."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "mode": "teach",
+      "reference": [
+        "station"
+      ]
+    },
+    {
+      "id": "core_vocabulary",
+      "name": "Buying a ticket",
+      "purpose": "Buying tickets at the counter: where to, how many, how much.",
+      "instructions": [
+        "The role-play is the ticket counter."
+      ],
+      "activities": [
+        {
+          "id": "number_echo",
+          "name": "Number echo",
+          "description": "You say a time or platform; the student repeats it and then alters it.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "The student can hear a time and say it back reliably."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "reference": [
+        "station",
+        "money"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "ticket_practice",
+      "name": "The right train",
+      "purpose": "Checking a train goes where you want, and when it leaves.",
+      "instructions": [
+        "The role-play is on the platform, asking someone."
+      ],
+      "activities": [
+        {
+          "id": "counter_exchange",
+          "name": "At the ticket counter",
+          "description": "Destination, single or return, how many, payment.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "One line to set the scene: they are at the counter."
+      ],
+      "advancement_guidance": [
+        "The student buys a ticket without prompting."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_destination",
+        "buy_ticket",
+        "ask_departure_time"
+      ],
+      "reference": [
+        "station",
+        "time"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "station_roleplay",
+      "name": "When you are lost",
+      "purpose": "Asking someone to say it again, to slow down, saying you do not understand, and asking where to change.",
+      "instructions": [
+        "The role-play is a member of staff speaking too fast."
+      ],
+      "activities": [
+        {
+          "id": "full_journey",
+          "name": "Buy, find, board",
+          "description": "Ticket, platform, departure, and getting on the right train.",
+          "importance": "required"
+        },
+        {
+          "id": "two_train_choice",
+          "name": "Choosing between two trains",
+          "description": "The student weighs two options aloud.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Stop scaffolding."
+      ],
+      "advancement_guidance": [
+        "The student completes a journey without rescue."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_platform",
+        "ask_arrival_time",
+        "ask_direct",
+        "find_train"
+      ],
+      "reference": [
+        "station"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "unexpected_problem",
+      "name": "The whole journey",
+      "purpose": "One journey from the ticket counter to the right platform, using everything so far.",
+      "instructions": [
+        "Play the station staff. Use only what the student has been taught."
+      ],
+      "activities": [
+        {
+          "id": "delay_announcement",
+          "name": "A delay is announced",
+          "description": "The student asks how long and what the options are.",
+          "importance": "suggested"
+        },
+        {
+          "id": "missed_connection",
+          "name": "A missed connection",
+          "description": "The student explains the problem and asks what to do.",
+          "importance": "optional"
+        }
+      ],
+      "entry_guidance": [
+        "Only if the student is coping."
+      ],
+      "advancement_guidance": [
+        "They asked for help in the target language."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_transfers",
+        "ask_delay",
+        "handle_travel_problem"
+      ],
+      "reference": [
+        "station",
+        "time"
+      ],
+      "mode": "roleplay"
+    },
+    {
+      "id": "review",
+      "name": "Review",
+      "purpose": "Everything from this lesson, from memory.",
+      "instructions": [
+        "Ask for each thing from its English.",
+        "Then say what they can now do."
+      ],
+      "activities": [
+        {
+          "id": "recall_check",
+          "name": "Recall check",
+          "description": "Retrieval, not repetition.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [
+        "End on something they did well."
+      ],
+      "objectives": [],
+      "mode": "review",
+      "reference": []
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "Slow the numbers down and use round times before awkward ones.",
+      "Reduce the exchange to one question and one answer at a time.",
+      "Go back to core vocabulary and rebuild rather than pressing on.",
+      "Offer a choice of two destinations instead of an open question.",
+      "Repeat the same counter exchange with a different city so the structure is reused."
+    ],
+    "if_succeeding": [
+      "Speak at a natural speed and stop simplifying the times.",
+      "Add a connection to the journey.",
+      "Introduce a delay or a platform change without warning.",
+      "Ask them to compare two trains and justify the choice.",
+      "Have a second passenger interrupt with a question."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "required objectives demonstrated",
+      "phase progression",
+      "whether a complete journey has been handled unaided"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "the student has bought a ticket unaided",
+      "the student has asked for and correctly understood a time and a platform number",
+      "at least one exchange happened with no scaffolding"
+    ],
+    "min_required_objectives": 4,
+    "announcement_guidance": [
+      "Mention the numbers specifically if that is where they improved.",
+      "Return to normal conversation afterwards."
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "travel vocabulary produced unprompted",
+      "whether times and numbers were understood on first hearing",
+      "question forms that failed repeatedly",
+      "any hesitation pattern worth noting as a weakness"
+    ],
+    "notes": "Ordinary vocabulary and weakness observations for the student's existing memory."
+  },
+  "reference": [
+    "station",
+    "time",
+    "money"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "kaiwa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kaiwa: a multi-user, multi-language voice tutor powered by the OpenAI Realtime API over WebRTC.",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/verify.mjs && node test/settings.mjs && node test/lessons.mjs && node test/logging.mjs && node test/sim.mjs",
+    "build": "node tools/build.mjs",
+    "test:settings": "node test/settings.mjs",
+    "test:dom": "node test/smoke-dom.mjs",
+    "test:flow": "node test/smoke-flow.mjs",
+    "test:call": "node test/smoke-call.mjs",
+    "test:lessons": "node test/lessons.mjs",
+    "logs": "node tools/review-log.mjs",
+    "test:logging": "node test/logging.mjs",
+    "sim:worker": "node tools/sim/worker.mjs",
+    "sim": "node tools/sim/client.mjs",
+    "sim:spend": "node tools/sim/budget.mjs",
+    "test:sim": "node test/sim.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "keywords": [
+    "openai",
+    "realtime",
+    "webrtc",
+    "language-learning",
+    "voice-agent"
+  ],
+  "license": "MIT"
+}

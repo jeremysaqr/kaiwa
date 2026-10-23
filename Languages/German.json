@@ -1,0 +1,69 @@
+{
+  "language": "German",
+  "reference": {
+    "numbers": "German two-digit numbers say the UNITS first, joined by \"und\", written as one word.\n1 eins (ein- when joined), 2 zwei, 3 drei, 4 vier, 5 fünf, 6 sechs, 7 sieben, 8 acht, 9 neun.\n11 elf, 12 zwölf, 13 dreizehn, 14 vierzehn, 15 fünfzehn, 16 sechzehn, 17 siebzehn, 18 achtzehn, 19 neunzehn.\nTens: 10 zehn, 20 zwanzig, 30 dreißig, 40 vierzig, 50 fünfzig, 60 sechzig, 70 siebzig, 80 achtzig, 90 neunzig.\nSo: 21 einundzwanzig, 29 neunundzwanzig, 61 einundsechzig, 99 neunundneunzig.\n100 hundert, 1000 tausend. 121 hunderteinundzwanzig.",
+    "time": "Es ist drei Uhr. Half past goes FORWARD to the next hour: halb vier is 3:30, not 4:30.\nQuarters: Viertel nach drei (3:15), Viertel vor vier (3:45).\nThe 24-hour clock is normal in timetables: fünfzehn Uhr dreißig.",
+    "money": "Euro and Cent, said with the unit between: 3,50 € is drei Euro fünfzig.\nA comma is the decimal separator, a full stop groups thousands: 1.250,00 €.\n\"How much\" is Wie viel kostet das?",
+    "food": "Food nouns carry gender, and guessing it wrong is the commonest mistake here. These are the genders.\ndas Fleisch meat, das Rindfleisch beef, das Schweinefleisch pork, das Hähnchen chicken, der Fisch fish, die Garnele prawn.\ndas Gemüse vegetables, die Zwiebel onion, die Kartoffel potato, die Karotte carrot (also die Möhre), die Tomate tomato, die Gurke cucumber, der Salat lettuce/salad, der Pilz mushroom, der Knoblauch garlic, die Paprika pepper, der Kohl cabbage, der Spinat spinach.\ndas Brot bread, das Ei egg, der Reis rice, die Nudeln noodles (plural), der Käse cheese, die Butter butter, das Salz salt, der Zucker sugar, das Öl oil.\ndas Obst fruit, der Apfel apple, die Banane banana, die Orange orange, die Erdbeere strawberry, die Traube grape, die Birne pear, der Pfirsich peach.\nPlurals that change the stem: der Apfel -> die Äpfel, die Kartoffel -> die Kartoffeln, das Brot -> die Brote.\nOrdering: Ich hätte gern ..., or Ich nehme ... Without something: ohne + accusative, e.g. ohne Zwiebeln."
+  },
+  "topics": {
+    "food": [
+      "food",
+      "foods",
+      "ingredient",
+      "ingredients",
+      "cooking",
+      "cook",
+      "meat",
+      "meats",
+      "vegetable",
+      "vegetables",
+      "fruit",
+      "fish",
+      "eat",
+      "eating",
+      "meal",
+      "meals",
+      "dish",
+      "dishes",
+      "menu",
+      "restaurant",
+      "recipe",
+      "groceries"
+    ],
+    "numbers": [
+      "number",
+      "numbers",
+      "counting",
+      "count",
+      "age",
+      "ages",
+      "quantity",
+      "quantities"
+    ],
+    "time": [
+      "time",
+      "times",
+      "clock",
+      "schedule",
+      "hours",
+      "appointment",
+      "appointments",
+      "date",
+      "dates"
+    ],
+    "money": [
+      "money",
+      "price",
+      "prices",
+      "cost",
+      "costs",
+      "paying",
+      "payment",
+      "shopping",
+      "buying",
+      "budget",
+      "euro"
+    ]
+  }
+}

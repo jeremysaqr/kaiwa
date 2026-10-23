@@ -1,0 +1,98 @@
+name: Release
+
+# Push a tag like v1.0.0 to build every platform and publish a GitHub release.
+# The release notes come from .github/release-notes/<tag>.md.
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+env:
+  BUN_VERSION: 1.4.2
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+        env:
+          OPENAI_API_KEY: ''
+          KAIWA_DATA_DIR: ${{ runner.temp }}/kaiwa-data
+
+  build:
+    needs: test
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            targets: windows-x64
+          # Built on a Mac so both binaries can be signed (ad hoc); Apple
+          # silicon refuses to run an unsigned one.
+          - os: macos-latest
+            targets: macos-arm64 macos-x64
+          - os: ubuntu-latest
+            targets: linux-x64 linux-arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+      - run: npm ci --omit=dev
+      - name: Build
+        shell: bash
+        run: |
+          for target in ${{ matrix.targets }}; do
+            node tools/build.mjs --target "$target"
+          done
+      - name: Check the archives hold no secrets or personal data
+        shell: bash
+        run: |
+          cd dist
+          for dir in Kaiwa-v*/; do
+            if [ -e "$dir/.env" ] || [ -e "$dir/Users" ] || [ -e "$dir/Logs" ]; then
+              echo "::error::$dir contains .env, Users or Logs"; exit 1
+            fi
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kaiwa-${{ matrix.os }}
+          path: |
+            dist/*.zip
+            dist/*.tar.gz
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Checksums
+        run: cd dist && sha256sum * > SHA256SUMS.txt && cat SHA256SUMS.txt
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          notes=".github/release-notes/${TAG}.md"
+          [ -f "$notes" ] || notes=/dev/null
+          gh release create "$TAG" dist/* --title "Kaiwa $TAG" --notes-file "$notes"

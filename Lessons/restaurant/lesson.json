@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "id": "restaurant",
+  "name": "Restaurant Roleplay",
+  "description": "Practice common interactions in a restaurant, from being seated to paying the bill.",
+  "version": "1.0",
+  "type": "scenario",
+  "activation": {
+    "voice_triggers": [
+      "restaurant roleplay lesson",
+      "restaurant roleplay",
+      "restaurant role play",
+      "restaurant lesson",
+      "lesson about restaurants",
+      "practice ordering in a restaurant"
+    ],
+    "voice_aliases": [
+      "restaurant",
+      "restaurants",
+      "ordering food",
+      "eating out",
+      "at a restaurant",
+      "in a restaurant"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [],
+  "objectives": [
+    {
+      "id": "greet_and_request_table",
+      "description": "Greet the staff and ask for a table.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks for a table unprompted",
+        "states how many people are in the party"
+      ]
+    },
+    {
+      "id": "request_menu",
+      "description": "Ask for the menu or for a recommendation.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks for the menu",
+        "asks what the tutor recommends"
+      ]
+    },
+    {
+      "id": "order_food",
+      "description": "Order a dish appropriately.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "uses a natural ordering phrase",
+        "names a dish without being fed the sentence"
+      ]
+    },
+    {
+      "id": "order_drinks",
+      "description": "Order a drink.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "orders a drink in the same turn or a following turn"
+      ]
+    },
+    {
+      "id": "ask_about_ingredients",
+      "description": "Ask what is in a dish.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "forms a question about a dish's contents"
+      ]
+    },
+    {
+      "id": "express_preferences",
+      "description": "Say what they like, dislike, or cannot eat.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "expresses a preference using a like or want structure"
+      ]
+    },
+    {
+      "id": "request_substitution",
+      "description": "Ask for a change to a dish.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks for something to be left out, added or swapped"
+      ]
+    },
+    {
+      "id": "handle_problem",
+      "description": "Deal with a small problem, such as an item being unavailable.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "reacts to the complication and chooses an alternative"
+      ]
+    },
+    {
+      "id": "request_bill",
+      "description": "Ask for the bill.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks for the bill or the check naturally"
+      ]
+    },
+    {
+      "id": "complete_payment",
+      "description": "Get through the payment exchange.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "responds to a question about payment method",
+        "understands the total"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "Be the restaurant staff. Stay in character, but drop it instantly for a real question.",
+    "A waiter asks short questions and waits. Give them the speaking time.",
+    "Let them build a sentence badly rather than building it for them.",
+    "Vary the dishes and details every run."
+  ],
+  "content": {
+    "target_vocabulary": [
+      "a table for two / for three",
+      "the menu",
+      "to order",
+      "a starter, a main course, a dessert",
+      "the bill / the check",
+      "to pay, by card, in cash",
+      "water, still or sparkling",
+      "delicious"
+    ],
+    "suggested_vocabulary": [
+      "reservation",
+      "waiter / waitress / server",
+      "the daily special",
+      "the wine list",
+      "a refill",
+      "vegetarian, allergic to",
+      "without, extra, instead of",
+      "to recommend",
+      "a receipt",
+      "a tip",
+      "napkin, fork, knife, spoon, glass, plate"
+    ],
+    "target_grammar": [
+      "polite request forms used to order",
+      "would like / want structures",
+      "yes-no and question-word questions about the menu",
+      "quantities and numbers for a party size and a bill",
+      "negation for things the student does not eat"
+    ],
+    "scenarios": [
+      {
+        "id": "casual_restaurant",
+        "name": "A casual restaurant",
+        "description": "Relaxed, informal service. A good default for a first run.",
+        "importance": "suggested"
+      },
+      {
+        "id": "formal_restaurant",
+        "name": "A formal restaurant",
+        "description": "More polite registers and a longer exchange. Better for confident students.",
+        "importance": "optional"
+      },
+      {
+        "id": "ordering_food",
+        "name": "Ordering a full meal",
+        "description": "Starter, main and drink, ordered in sequence.",
+        "importance": "required"
+      },
+      {
+        "id": "asking_about_ingredients",
+        "name": "Asking what is in a dish",
+        "description": "The student asks about contents, then decides.",
+        "importance": "suggested"
+      },
+      {
+        "id": "unavailable_item",
+        "name": "The dish is unavailable",
+        "description": "A complication that forces an unscripted response.",
+        "importance": "suggested"
+      },
+      {
+        "id": "requesting_the_bill",
+        "name": "Paying and leaving",
+        "description": "Asking for the bill, handling payment, saying goodbye.",
+        "importance": "required"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "introduction",
+      "name": "Arriving",
+      "purpose": "Getting seated: calling the staff, saying how many people, asking for the menu.",
+      "instructions": [
+        "The role-play is walking in: the waiter greets them and asks how many."
+      ],
+      "activities": [],
+      "entry_guidance": [
+        "Keep it warm and brief; the student wants to start talking."
+      ],
+      "advancement_guidance": [
+        "Move on as soon as you have a rough idea of where they are."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "mode": "teach",
+      "reference": [
+        "restaurant"
+      ]
+    },
+    {
+      "id": "useful_vocabulary",
+      "name": "Ordering",
+      "purpose": "Ordering food and drink: something please, this one please, two of something, water or a beer.",
+      "instructions": [
+        "The role-play is the waiter taking the order."
+      ],
+      "activities": [
+        {
+          "id": "say_it_back",
+          "name": "Say it back in a sentence",
+          "description": "The student uses each new item in their own sentence rather than repeating it.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "Skip most of this phase if the student is already comfortable."
+      ],
+      "advancement_guidance": [
+        "The student can produce a basic order without a model."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "reference": [
+        "restaurant",
+        "food"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "guided_ordering",
+      "name": "Asking and declining",
+      "purpose": "Asking what they recommend, asking for a dish without an ingredient, saying that is everything.",
+      "instructions": [
+        "The role-play is the waiter checking the order."
+      ],
+      "activities": [
+        {
+          "id": "order_with_prompts",
+          "name": "Order with prompts",
+          "description": "The student orders while you supply structure when needed.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "Set the scene in one line: they have just walked in."
+      ],
+      "advancement_guidance": [
+        "The student completes an order with little or no prompting.",
+        "They start volunteering detail you did not ask for."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "greet_and_request_table",
+        "request_menu",
+        "order_food",
+        "order_drinks"
+      ],
+      "reference": [
+        "restaurant",
+        "food"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "restaurant_roleplay",
+      "name": "Paying and leaving",
+      "purpose": "Asking for the bill, paying by card or cash, saying it was delicious, thanking them on the way out.",
+      "instructions": [
+        "The role-play is the end of the meal."
+      ],
+      "activities": [
+        {
+          "id": "full_visit",
+          "name": "A complete visit",
+          "description": "Seated, order, eat, ask for the bill, pay, leave.",
+          "importance": "required"
+        },
+        {
+          "id": "ingredient_questions",
+          "name": "Questions about the food",
+          "description": "Encourage the student to ask what something is.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Stop offering phrasings. Let silences happen."
+      ],
+      "advancement_guidance": [
+        "The student gets through a visit without needing rescue."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_about_ingredients",
+        "express_preferences",
+        "request_bill",
+        "complete_payment"
+      ],
+      "reference": [
+        "restaurant",
+        "money"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "challenge",
+      "name": "The whole visit",
+      "purpose": "One visit from walking in to paying, using everything so far.",
+      "instructions": [
+        "Play the waiter. Use only what the student has been taught."
+      ],
+      "activities": [
+        {
+          "id": "unavailable_dish",
+          "name": "That dish is unavailable",
+          "description": "The student must choose something else on the spot.",
+          "importance": "suggested"
+        },
+        {
+          "id": "substitution_request",
+          "name": "Asking for a change",
+          "description": "The student asks for something to be left out or swapped.",
+          "importance": "optional"
+        }
+      ],
+      "entry_guidance": [
+        "Only enter this phase if the student is coping well."
+      ],
+      "advancement_guidance": [
+        "They handled the complication, or clearly found it too much."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "request_substitution",
+        "handle_problem"
+      ],
+      "reference": [
+        "restaurant",
+        "food"
+      ],
+      "mode": "roleplay"
+    },
+    {
+      "id": "review",
+      "name": "Review",
+      "purpose": "Everything from this lesson, from memory.",
+      "instructions": [
+        "Ask for each thing from its English.",
+        "Then say what they can now do."
+      ],
+      "activities": [
+        {
+          "id": "recall_check",
+          "name": "Recall check",
+          "description": "Retrieval from memory, not repetition after you.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [
+        "Finish on something the student did well."
+      ],
+      "objectives": [],
+      "mode": "review",
+      "reference": []
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "Stay in the phase you are in and lower the demand rather than moving on.",
+      "Offer a choice between two phrasings instead of an open question.",
+      "Shorten your own turns; a longer explanation makes the problem worse.",
+      "Return to guided ordering and rebuild from a single sentence.",
+      "Repeat the same exchange with a different dish so the structure is reused."
+    ],
+    "if_succeeding": [
+      "Stop offering phrasings and let them build the sentence.",
+      "Ask a follow-up question that was not part of the script.",
+      "Introduce a complication from the challenge phase.",
+      "Move towards a more formal register.",
+      "Ask them to order for two people, or to change their mind mid-order."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "required objectives the student has actually demonstrated",
+      "how far through the phases the lesson has moved",
+      "whether a full visit has been completed unaided"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "the student has ordered food and a drink without being fed the sentence",
+      "the student has asked for the bill",
+      "at least one exchange happened with no scaffolding at all"
+    ],
+    "min_required_objectives": 4,
+    "announcement_guidance": [
+      "Name one specific thing they did well, not a generic well done.",
+      "Then return to ordinary conversation without ceremony."
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "restaurant vocabulary the student produced unprompted",
+      "phrases they reached for and could not find",
+      "question forms that came out wrong more than once",
+      "any dish or preference detail worth remembering about this student"
+    ],
+    "notes": "These are ordinary vocabulary and weakness observations. They belong in the student's existing memory, not in a restaurant-specific store."
+  },
+  "reference": [
+    "restaurant",
+    "food",
+    "money"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "duplicate_phases",
+  "name": "Repeated Phases",
+  "type": "scenario",
+  "objectives": [
+    { "id": "same", "description": "First." },
+    { "id": "same", "description": "Second." }
+  ],
+  "phases": [
+    { "id": "warmup", "name": "Warm Up" },
+    { "id": "warmup", "name": "Warm Up Again" }
+  ]
+}

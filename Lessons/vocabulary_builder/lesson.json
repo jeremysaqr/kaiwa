@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "id": "vocabulary_builder",
+  "name": "Vocabulary Builder",
+  "description": "Learn a small set of words on a topic you choose, met once, recalled from memory, then used for real.",
+  "version": "1.0",
+  "type": "instructional",
+  "activation": {
+    "voice_triggers": [
+      "vocabulary lesson",
+      "vocabulary builder",
+      "vocabulary building lesson",
+      "vocab lesson",
+      "vocabulary drill",
+      "build my vocabulary",
+      "learn some new vocabulary",
+      "work on vocabulary"
+    ],
+    "voice_aliases": [
+      "vocabulary",
+      "vocab",
+      "new words",
+      "some words",
+      "word list"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [
+    {
+      "id": "topic",
+      "name": "Vocabulary topic",
+      "type": "text",
+      "required": true,
+      "ask_user": true,
+      "allow_tutor_choice": true,
+      "prompt": "What kind of vocabulary would you like to work on? Or I can suggest something.",
+      "options": [],
+      "default": null
+    }
+  ],
+  "objectives": [
+    {
+      "id": "choose_topic",
+      "description": "Settle on a coherent vocabulary topic.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "the student picks a topic",
+        "the student asks the tutor to pick and accepts the suggestion"
+      ]
+    },
+    {
+      "id": "meet_the_set",
+      "description": "Meet every word in the set once, with a meaning and an example.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "every word in the set has been introduced and said aloud once"
+      ]
+    },
+    {
+      "id": "recall_words",
+      "description": "Retrieve words from memory, unprompted by the tutor saying them.",
+      "required": true,
+      "weight": 3,
+      "success_indicators": [
+        "produces a word when given only the meaning",
+        "no part of the word was supplied first"
+      ]
+    },
+    {
+      "id": "use_in_context",
+      "description": "Use the words in sentences of the student's own.",
+      "required": true,
+      "weight": 3,
+      "success_indicators": [
+        "builds an original sentence, not a repetition of the example"
+      ]
+    },
+    {
+      "id": "connect_to_existing",
+      "description": "Link new words to vocabulary the student already has.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "uses a new word alongside older vocabulary in one sentence"
+      ]
+    },
+    {
+      "id": "spontaneous_use",
+      "description": "Use a new word unprompted in ordinary conversation.",
+      "required": false,
+      "weight": 2,
+      "success_indicators": [
+        "a new word appears in an answer where it was not asked for"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "The topic is the student's. Ask before deciding anything else.",
+    "If they ask you to choose, pick a coherent domain from their weaknesses, their recent vocabulary and what they would actually use - never a scatter of unrelated words.",
+    "Five words, at most six. Each met about three times across the whole lesson, spread out, never three in a row.",
+    "Move through the whole set before returning to any word.",
+    "Use the student's support language for meanings when it saves effort, then straight back into the target language.",
+    "If a word will not stick after two honest attempts, note it and let it go."
+  ],
+  "content": {
+    "target_vocabulary": [],
+    "suggested_vocabulary": [],
+    "target_grammar": [],
+    "scenarios": [
+      {
+        "id": "student_chosen_topic",
+        "name": "A topic the student names",
+        "description": "The student says what they want to learn; you build the set around it.",
+        "importance": "required"
+      },
+      {
+        "id": "tutor_suggested_topic",
+        "name": "A topic you suggest",
+        "description": "The student asks you to choose; you pick from their weaknesses, retention gaps and practical needs.",
+        "importance": "suggested"
+      },
+      {
+        "id": "gap_filling",
+        "name": "Filling a gap you noticed",
+        "description": "A domain the student has visibly reached for and lacked in past conversation.",
+        "importance": "optional"
+      },
+      {
+        "id": "revisit_weak_words",
+        "name": "Words that did not stick",
+        "description": "Rebuild a set around vocabulary the student has met before and lost.",
+        "importance": "optional"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "choose_topic",
+      "name": "Choosing a topic",
+      "purpose": "Agree what this lesson is about, in one exchange.",
+      "instructions": [
+        "Ask, in English, what they want to be able to talk about, and offer to suggest something. One question.",
+        "When they answer, your whole turn is two words: \"One moment.\" Do not say their subject back, ask nothing and teach nothing in that turn.",
+        "If they say you choose, name one everyday subject and ask if that suits."
+      ],
+      "activities": [
+        {
+          "id": "ask_or_suggest",
+          "name": "Ask, or suggest",
+          "description": "A single exchange that settles the topic.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "Do not teach any words before the topic is settled."
+      ],
+      "advancement_guidance": [
+        "A topic is agreed. Move on immediately."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "choose_topic"
+      ],
+      "mode": "talk",
+      "reference": []
+    },
+    {
+      "id": "first_pass",
+      "name": "First set",
+      "purpose": "The most useful words or short phrases for the subject the student chose.",
+      "instructions": [
+        "Only words inside the subject as the student phrased it. If they named more than one kind of thing, cover each kind.",
+        "Single words, and then as the last item the frame the words are used in, with one of them in it (\"gyuuniku o onegaishimasu\" — beef, please), so that the role-play can ask for any of them.",
+        "The role-play is one exchange: the open question a person would really ask where those words are needed, which any of the words could answer."
+      ],
+      "activities": [
+        {
+          "id": "meet_each_word",
+          "name": "Meet each word once",
+          "description": "Introduce, exemplify, one student sentence, next word.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "Tell them roughly how many words you will cover, then begin."
+      ],
+      "advancement_guidance": [
+        "Every word in the set has been said once by the student, however shakily. Move on then - not when they are perfect.",
+        "Never spend more than two of the student's turns on one word here."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "meet_the_set"
+      ],
+      "mode": "teach",
+      "quick_round": true,
+      "reference": [],
+      "role_play": "single"
+    },
+    {
+      "id": "recall",
+      "name": "Second set",
+      "purpose": "More words for the same subject, building on the first set.",
+      "instructions": [
+        "More words inside the subject as the student phrased it, from the kinds the first set did not reach. Every item is a single word — a dish or thing made from a word already taught counts (\"gyuudon\" — beef bowl). No sentences in this set: the student has the frame already, and the words are drilled quickly.",
+        "Do not repeat the first set."
+      ],
+      "activities": [
+        {
+          "id": "meaning_to_word",
+          "name": "Meaning to word",
+          "description": "The tutor gives the meaning only; the student supplies the word.",
+          "importance": "required"
+        },
+        {
+          "id": "second_look",
+          "name": "A second look",
+          "description": "Only the words that did not come back the first time.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Say you are going to test them lightly, then start. Do not re-teach first."
+      ],
+      "advancement_guidance": [
+        "You have been through the set once and revisited the gaps once. Move on then, even if some words are still shaky.",
+        "Words that failed twice are noted, not drilled further."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "recall_words"
+      ],
+      "mode": "teach",
+      "quick_round": true,
+      "reference": [],
+      "role_play": "none"
+    },
+    {
+      "id": "in_context",
+      "name": "Using them",
+      "purpose": "Short things a visitor would really say that use the words from both sets: asking for one, saying you would like one, saying you do not want one.",
+      "instructions": [
+        "Each item is a short phrase built around words already taught."
+      ],
+      "activities": [
+        {
+          "id": "real_questions",
+          "name": "Questions about their life",
+          "description": "Answers require the new vocabulary; the student composes freely.",
+          "importance": "required"
+        },
+        {
+          "id": "linked_sentences",
+          "name": "Two words at once",
+          "description": "A sentence using two of the new words together.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Stop testing. This is a conversation that happens to use today's words."
+      ],
+      "advancement_guidance": [
+        "The student has produced several original sentences using the set."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "use_in_context",
+        "connect_to_existing",
+        "spontaneous_use"
+      ],
+      "mode": "teach",
+      "reference": [],
+      "role_play": "single",
+      "quick_round": false
+    },
+    {
+      "id": "wrap_up",
+      "name": "Review",
+      "purpose": "Everything from this lesson, from memory.",
+      "instructions": [
+        "Ask for each thing from its English.",
+        "Then say what they can now do."
+      ],
+      "activities": [
+        {
+          "id": "honest_summary",
+          "name": "What stuck",
+          "description": "A short, specific account of the lesson's result.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [
+        "Be specific about which words stuck. Then call complete_lesson."
+      ],
+      "objectives": [],
+      "mode": "review",
+      "reference": []
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "Shrink the set. Three words the student owns is a good lesson.",
+      "Stop introducing new words and move to the recall phase with what you have.",
+      "Use the support language more freely for meanings, so the effort goes into the word itself.",
+      "Give a first sound rather than the answer, then move to the next word regardless.",
+      "Change the KIND of task rather than repeating the same one more slowly."
+    ],
+    "if_succeeding": [
+      "Add a word or two, and let them be less common ones.",
+      "Explain meanings in the target language instead of the support language.",
+      "Ask for a sentence using two of the new words at once.",
+      "Move to open conversation on the topic and see which words surface unasked.",
+      "Introduce a near-synonym and ask about the difference."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "required objectives demonstrated",
+      "how many of the chosen words survive retrieval",
+      "whether words are being used in original sentences"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "a topic was agreed and a set of five or so words was worked through",
+      "most of the set was retrieved from memory without the tutor supplying it",
+      "the student used several of the words in sentences of their own"
+    ],
+    "min_required_objectives": 3,
+    "announcement_guidance": [
+      "Name the words that stuck. That is the concrete result of this lesson.",
+      "Mention any that need another look, without turning it into homework.",
+      "Return to normal conversation afterwards."
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "the words introduced, with their meanings",
+      "which words came back from memory unaided and which failed twice",
+      "the topic itself, if it suggests something about what this student needs",
+      "any grammar problem that surfaced while building sentences"
+    ],
+    "notes": "Words introduced here are simply vocabulary. Do not mark them as learned automatically — the existing memory extractor decides what persists."
+  }
+}

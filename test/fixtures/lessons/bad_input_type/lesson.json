@@ -1,0 +1,8 @@
+{
+  "id": "bad_input_type",
+  "name": "Impossible Input",
+  "type": "instructional",
+  "runtime_inputs": [
+    { "id": "mood", "name": "Mood", "type": "telepathy", "required": true }
+  ]
+}

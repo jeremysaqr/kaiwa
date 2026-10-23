@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "id": "hotel_front_desk",
+  "name": "Hotel Front Desk",
+  "description": "Practice checking in, asking about the hotel, reporting a problem and checking out.",
+  "version": "1.0",
+  "type": "scenario",
+  "activation": {
+    "voice_triggers": [
+      "hotel front desk lesson",
+      "hotel front desk",
+      "hotel lesson",
+      "hotel roleplay",
+      "hotel role play",
+      "lesson about hotels",
+      "practice checking into a hotel",
+      "checking into a hotel lesson"
+    ],
+    "voice_aliases": [
+      "hotel",
+      "hotels",
+      "the front desk",
+      "reception",
+      "checking in",
+      "checking out"
+    ],
+    "confirmation_behavior": "confirm_when_ambiguous"
+  },
+  "prerequisites": {},
+  "runtime_inputs": [],
+  "objectives": [
+    {
+      "id": "check_in",
+      "description": "Open the check-in and say they have a reservation.",
+      "required": true,
+      "weight": 2,
+      "success_indicators": [
+        "states the purpose without being asked a leading question"
+      ]
+    },
+    {
+      "id": "confirm_reservation",
+      "description": "Confirm the booking details.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "confirms nights, room type or dates correctly"
+      ]
+    },
+    {
+      "id": "provide_details",
+      "description": "Give their name and any details the desk asks for.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "spells a name or gives a number when asked"
+      ]
+    },
+    {
+      "id": "ask_about_room",
+      "description": "Ask a question about the room.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks about floor, view, bed, or quietness"
+      ]
+    },
+    {
+      "id": "ask_about_facilities",
+      "description": "Ask what the hotel has.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks about a facility unprompted"
+      ]
+    },
+    {
+      "id": "ask_about_breakfast",
+      "description": "Ask when and where breakfast is.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks a time question and understands the answer"
+      ]
+    },
+    {
+      "id": "ask_about_wifi",
+      "description": "Ask about internet access and understand the reply.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks for and repeats back a password or code"
+      ]
+    },
+    {
+      "id": "ask_about_checkout",
+      "description": "Ask what time check-out is.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "asks the time and confirms it"
+      ]
+    },
+    {
+      "id": "ask_directions_inside",
+      "description": "Ask how to find something in the hotel.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "asks where something is and follows the answer"
+      ]
+    },
+    {
+      "id": "report_problem",
+      "description": "Report a problem with the room.",
+      "required": false,
+      "weight": 2,
+      "success_indicators": [
+        "describes the problem clearly",
+        "asks for it to be fixed"
+      ]
+    },
+    {
+      "id": "check_out",
+      "description": "Check out.",
+      "required": true,
+      "weight": 1,
+      "success_indicators": [
+        "opens the check-out and returns the key"
+      ]
+    },
+    {
+      "id": "confirm_charges",
+      "description": "Query or confirm the charges and pay.",
+      "required": false,
+      "weight": 1,
+      "success_indicators": [
+        "understands a total",
+        "asks about an unexpected item"
+      ]
+    }
+  ],
+  "teaching_philosophy": [
+    "Be the receptionist: polite, efficient, slightly formal.",
+    "This scenario is full of numbers and spellings. Use them.",
+    "Reporting a problem needs description rather than a memorised phrase. Get to it.",
+    "Ask the questions a real desk asks, including unprepared ones.",
+    "Vary the hotel, the room number and the small talk each time."
+  ],
+  "content": {
+    "target_vocabulary": [
+      "a reservation, a booking",
+      "to check in, to check out",
+      "a single room, a double room",
+      "for two nights",
+      "the key, the key card",
+      "breakfast, included",
+      "the lift / elevator, the stairs",
+      "the floor, the room number",
+      "wifi, the password"
+    ],
+    "suggested_vocabulary": [
+      "luggage, to leave luggage",
+      "a wake-up call",
+      "the safe",
+      "air conditioning, heating",
+      "a towel, a pillow, a blanket",
+      "it does not work, it is broken",
+      "noisy, quiet",
+      "the bill, an extra charge, the minibar",
+      "a receipt",
+      "late check-out",
+      "the gym, the pool, the car park"
+    ],
+    "target_grammar": [
+      "polite request and question forms",
+      "numbers for nights, floors, room numbers and times",
+      "spelling a name aloud",
+      "describing a problem: it is, it does not, there is no",
+      "past forms for what happened in the room"
+    ],
+    "scenarios": [
+      {
+        "id": "normal_check_in",
+        "name": "A straightforward check-in",
+        "description": "Reservation, details, key, directions to the room.",
+        "importance": "required"
+      },
+      {
+        "id": "room_not_ready",
+        "name": "The room is not ready",
+        "description": "The student has to ask what to do and where to wait.",
+        "importance": "suggested"
+      },
+      {
+        "id": "breakfast_question",
+        "name": "Asking about breakfast",
+        "description": "Times, location, whether it is included.",
+        "importance": "required"
+      },
+      {
+        "id": "wifi_question",
+        "name": "Asking about wifi",
+        "description": "The student asks for the code and reads it back.",
+        "importance": "suggested"
+      },
+      {
+        "id": "room_problem",
+        "name": "Something is wrong with the room",
+        "description": "The student describes a problem and asks for it to be sorted.",
+        "importance": "suggested"
+      },
+      {
+        "id": "checking_out",
+        "name": "Checking out",
+        "description": "Key returned, bill checked, goodbye.",
+        "importance": "required"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "introduction",
+      "name": "Checking in",
+      "purpose": "Arriving at the desk: check-in please, I have a reservation, giving your name, handing over a passport.",
+      "instructions": [
+        "The role-play is the front desk as they arrive."
+      ],
+      "activities": [],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "You have a rough sense of their level with this."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "mode": "teach",
+      "reference": [
+        "hotel"
+      ]
+    },
+    {
+      "id": "check_in_vocabulary",
+      "name": "Your room",
+      "purpose": "Understanding what the desk tells you: the room, the key, which floor, how many nights.",
+      "instructions": [
+        "The role-play is the receptionist giving them their room."
+      ],
+      "activities": [
+        {
+          "id": "spell_your_name",
+          "name": "Spelling a name",
+          "description": "The student spells their surname aloud in the target language.",
+          "importance": "suggested"
+        }
+      ],
+      "entry_guidance": [
+        "Skip most of this if the student is comfortable."
+      ],
+      "advancement_guidance": [
+        "They can open a check-in unaided."
+      ],
+      "completion_guidance": [],
+      "objectives": [],
+      "mode": "teach",
+      "reference": [
+        "hotel",
+        "numbers"
+      ]
+    },
+    {
+      "id": "guided_check_in",
+      "name": "Asking about the hotel",
+      "purpose": "Asking what time breakfast is, whether there is wifi, and for the password.",
+      "instructions": [
+        "The role-play is the student asking the desk questions."
+      ],
+      "activities": [
+        {
+          "id": "arrival",
+          "name": "Arriving at the desk",
+          "description": "Greeting, reservation, name, nights.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "One line of scene-setting."
+      ],
+      "advancement_guidance": [
+        "The student opens and sustains the exchange without prompts."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "check_in",
+        "confirm_reservation",
+        "provide_details"
+      ],
+      "reference": [
+        "hotel",
+        "time"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "full_check_in_roleplay",
+      "name": "Check-in, start to finish",
+      "purpose": "The whole arrival at the desk, using everything so far.",
+      "instructions": [
+        "Play the receptionist. Use only what the student has been taught."
+      ],
+      "activities": [
+        {
+          "id": "complete_arrival",
+          "name": "Arrival end to end",
+          "description": "From greeting to being handed the key.",
+          "importance": "required"
+        },
+        {
+          "id": "room_not_ready_twist",
+          "name": "The room is not ready",
+          "description": "An unexpected wait the student must respond to.",
+          "importance": "optional"
+        }
+      ],
+      "entry_guidance": [
+        "Stop offering phrasings."
+      ],
+      "advancement_guidance": [
+        "A check-in completes without rescue."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_about_room"
+      ],
+      "reference": [
+        "hotel"
+      ],
+      "mode": "roleplay"
+    },
+    {
+      "id": "hotel_questions",
+      "name": "Something is wrong",
+      "purpose": "Reporting a problem with the room: something does not work, there is no hot water.",
+      "instructions": [
+        "The role-play is calling the front desk."
+      ],
+      "activities": [
+        {
+          "id": "facilities_round",
+          "name": "What does the hotel have?",
+          "description": "Breakfast, wifi, gym, parking, check-out time.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [
+        "The student asks several questions unprompted."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "ask_about_facilities",
+        "ask_about_breakfast",
+        "ask_about_wifi",
+        "ask_about_checkout",
+        "ask_directions_inside"
+      ],
+      "reference": [
+        "hotel"
+      ],
+      "mode": "teach"
+    },
+    {
+      "id": "problem_scenario",
+      "name": "Checking out",
+      "purpose": "Checking out, asking them to keep your luggage, thanking them.",
+      "instructions": [
+        "The role-play is the desk on the last morning."
+      ],
+      "activities": [
+        {
+          "id": "describe_the_problem",
+          "name": "Describing the problem",
+          "description": "The student explains what is wrong and what they want done.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [
+        "This is the most valuable phase. Reach it if you can."
+      ],
+      "advancement_guidance": [
+        "The problem was described and a resolution agreed."
+      ],
+      "completion_guidance": [],
+      "objectives": [
+        "report_problem"
+      ],
+      "mode": "teach",
+      "reference": [
+        "hotel",
+        "money"
+      ]
+    },
+    {
+      "id": "checkout",
+      "name": "The whole stay",
+      "purpose": "Arrival, one question, one problem and checking out, using everything so far.",
+      "instructions": [
+        "Play the receptionist. Use only what the student has been taught."
+      ],
+      "activities": [
+        {
+          "id": "settle_the_bill",
+          "name": "Settling the bill",
+          "description": "Key returned, charges checked, payment made.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [],
+      "objectives": [
+        "check_out",
+        "confirm_charges"
+      ],
+      "reference": [
+        "hotel"
+      ],
+      "mode": "roleplay"
+    },
+    {
+      "id": "review",
+      "name": "Review",
+      "purpose": "Everything from this lesson, from memory.",
+      "instructions": [
+        "Ask for each thing from its English.",
+        "Then say what they can now do."
+      ],
+      "activities": [
+        {
+          "id": "recall_check",
+          "name": "Recall check",
+          "description": "Retrieval, not repetition.",
+          "importance": "required"
+        }
+      ],
+      "entry_guidance": [],
+      "advancement_guidance": [],
+      "completion_guidance": [
+        "End on something they did well."
+      ],
+      "objectives": [],
+      "mode": "review",
+      "reference": []
+    }
+  ],
+  "adaptation": {
+    "if_struggling": [
+      "Stay in the guided phase and reduce the exchange to one question at a time.",
+      "Offer a choice of two answers rather than an open question.",
+      "Drop the unexpected questions and keep the check-in predictable.",
+      "Skip the problem phase entirely; describing a fault is demanding.",
+      "Repeat the same check-in with a different name and number of nights."
+    ],
+    "if_succeeding": [
+      "Speak faster and more formally.",
+      "Ask questions they cannot have prepared for.",
+      "Move to the problem phase early and make the problem awkward.",
+      "Put a disputed charge on the bill.",
+      "Have the phone ring mid-conversation so the exchange is interrupted and resumed."
+    ]
+  },
+  "progress": {
+    "basis": [
+      "required objectives demonstrated",
+      "phase progression",
+      "whether a check-in and a check-out have both been handled unaided"
+    ],
+    "notes": "Approximate. Never state a percentage to the student."
+  },
+  "completion": {
+    "criteria": [
+      "the student has checked in unaided",
+      "the student has asked at least two questions about the hotel without prompting",
+      "the student has checked out"
+    ],
+    "min_required_objectives": 5,
+    "announcement_guidance": [
+      "Mention the problem description specifically if they got that far — it is the hardest part.",
+      "Return to normal conversation afterwards."
+    ],
+    "allow_early_completion": true
+  },
+  "memory": {
+    "observe": [
+      "hotel and accommodation vocabulary produced unprompted",
+      "whether spelling aloud and numbers were reliable",
+      "how well the student described a problem",
+      "question forms that failed repeatedly"
+    ],
+    "notes": "Ordinary vocabulary and weakness observations for the student's existing memory."
+  },
+  "reference": [
+    "hotel",
+    "time",
+    "money"
+  ]
+}

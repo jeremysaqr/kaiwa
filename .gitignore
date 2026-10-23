@@ -1,0 +1,45 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Runtime / build output
+dist/
+build/
+coverage/
+*.tmp
+
+# Session logs — local diagnostics, never committed
+Logs/
+
+# Test harness: request/response files, run logs, and the spend ledger
+tools/sim/io/
+tools/sim/runs/
+tools/sim/ledger.json
+tools/sim/ledger.json.lock/
+tools/sim/worker.log
+
+# Saved profiles and exported sessions — personal, never committed
+Users/
+session-export/
+
+# Private working notes and old snapshots, kept locally only
+CROSS-CHECK-*.md
+NEXT-STEPS-*.md
+language-tutor-lessons.zip
